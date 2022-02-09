@@ -78,12 +78,16 @@ public class ContactAdapter extends RecyclerView.Adapter {
             cvh.getDeleteButton().setVisibility(View.INVISIBLE);
         }
     }
+    @Override
+    public int getItemCount() {
+        return contactData.size();
+    }
     public void setDelete(boolean b) {
         isDeleting = b;
     }
 
     private void deleteItem(int position) {
-        Contact contact =contactData.get(position);
+        Contact contact = contactData.get(position);
         ContactDataSource ds = new ContactDataSource(parentContext);
         try {
             ds.open();
@@ -102,9 +106,6 @@ public class ContactAdapter extends RecyclerView.Adapter {
         }
 
     }
-    @Override
-    public int getItemCount() {
-        return contactData.size();
-    }
+
 
 }
